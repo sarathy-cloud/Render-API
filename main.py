@@ -9,7 +9,7 @@ app = FastAPI()
 def health():
     return {"status": "ok"}
 
-@app.post("/predict")
+@app.post("/detect")
 async def predict_api(file: UploadFile = File(...)):
     img_bytes = await file.read()
     img = cv2.imdecode(np.frombuffer(img_bytes, np.uint8), cv2.IMREAD_COLOR)
